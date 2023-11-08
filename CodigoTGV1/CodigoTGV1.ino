@@ -216,35 +216,36 @@ for (int i = 0; i < pasosPorVuelta * 2; i++)
 /////////////FASE DE TRITURADO DE MASA////////////////
     // Función principal para el triturado de masa
     void trituradoMasa() {
-      
+
 // Triturado paso a paso 
+Serial.println("GIRO  DE MOTOR PASO A PASO A IZQUIERDA ");
             for (int i = 0; i < pasosPorVuelta * 2; i++){
-              sentidoHorario(IN1_PTOPRF2,IN2_PTOPRF2,IN3_PTOPRF2,IN4_PTOPRF2);
+              sentidoHorario(IN1_PTOPRF3,IN2_PTOPRF3,IN3_PTOPRF3,IN4_PTOPRF3);
               delayMicroseconds(velocidadMotor);
               }
 /// CAMBIO DE SENTIDO 
 Serial.println("GIRO  DE MOTOR PASO A PASO A DERECHA ");
-delay(tiempoTriturado);
-      triturarMasaDC(tiempoTriturado);  // Triturado de masa con motor DC
+
+
+      // Configurar sentido de giro del motor DC
+      digitalWrite(IN1_DCRF1, HIGH);
+      digitalWrite(IN2_DCRF1, LOW);
+      analogWrite(MotorDC1, 7 CF  VGFTWSE5R4
+      0);  // Encender motor DC a máxima velocidad
+      delay(1000);  // Mantener encendido durante tiempo ajustable
+      analogWrite(MotorDC1, 0);  // Apagar motor DC
+     Serial.println("inrgesa a el motor de triturado DC");
+
+      
 // Triturado paso a paso a retornar a posicion inicial
             for (int i = 0; i < pasosPorVuelta * 2; i++){
-              sentidoAntihorario(IN1_PTOPRF2,IN2_PTOPRF2,IN3_PTOPRF2,IN4_PTOPRF2);
+              sentidoAntihorario(IN1_PTOPRF3,IN2_PTOPRF3,IN3_PTOPRF3,IN4_PTOPRF3);
               delayMicroseconds(velocidadMotor);
               }
-Serial.println("GIRO  DE MOTOR PASO A PASO A IZQUIERDA ");
+
 
  }
-    // Función para manejar el motor DC
-    void triturarMasaDC(int tiempo) {
-      // Configurar sentido de giro del motor DC
-      digitalWrite(IN1_DCRF3, HIGH);
-      digitalWrite(IN2_DCRF3, LOW);
-      analogWrite(MotorDC3, 120);  // Encender motor DC a máxima velocidad
-      delay(tiempoTriturado);  // Mantener encendido durante tiempo ajustable
-      analogWrite(MotorDC3, 0);  // Apagar motor DC
-     
-    }
-    
+
 
 
 ///////////////////////// ---------------------------------------//////////////////////////////////
